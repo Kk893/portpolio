@@ -1,38 +1,117 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+        .sidebar button {
+            background-color: black;
+            color: white;
+            border: 1px solid #00aaff;
+            padding: 10px 20px;
+            margin: 5px 0;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+        }
+        .sidebar button:hover {
+            background-color: #00aaff;
+        }
+        .content {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 2px solid #00aaff;
+            padding: 20px;
+            box-shadow: 0 0 10px #00aaff;
+        }
+        .content h1 {
+            color: #00aaff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .content .icon {
+            margin-right: 10px;
+        }
+        .content .social-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .content .social-icons a {
+            color: white;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-
-    <!-- Splash Screen -->
-    <div id="splash">
-        <h1>Welcome to My Portfolio</h1>
-    </div>
-
-    <!-- Main Content -->
     <div class="container">
-        <!-- Sidebar Menu -->
-        <nav class="sidebar">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Skills</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-
-        <!-- Portfolio Content -->
-        <section class="content">
-            <h2>Hello, I'm <span>Your Name</span></h2>
-            <p>I'm a passionate developer creating amazing web experiences.</p>
-        </section>
+        <div class="sidebar">
+            <button>Intro</button>
+            <button>Work</button>
+            <button>Education</button>
+            <button>Certificates</button>
+            <button>Projects</button>
+            <button>Contacts</button>
+        </div>
+        <div class="content">
+            <h1 id="contact-title">Contacts</h1>
+            <p><i class="fas fa-map-marker-alt icon"></i><span id="location"></span></p>
+            <p><i class="fas fa-envelope icon"></i><span id="email"></span></p>
+            <p><i class="fas fa-phone icon"></i><span id="phone"></span></p>
+            <div class="social-icons">
+                <a href="#" id="facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" id="linkedin"><i class="fab fa-linkedin"></i></a>
+                <a href="#" id="github"><i class="fab fa-github"></i></a>
+                <a href="#" id="dribbble"><i class="fab fa-dribbble"></i></a>
+            </div>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Dynamic content
+        const contactInfo = {
+            location: "Beijing, China",
+            email: "email@nameazam.com",
+            phone: "+123456789",
+            socialLinks: {
+                facebook: "https://facebook.com/username",
+                linkedin: "https://linkedin.com/in/username",
+                github: "https://github.com/username",
+                dribbble: "https://dribbble.com/username"
+            }
+        };
+
+        document.getElementById("location").textContent = contactInfo.location;
+        document.getElementById("email").textContent = contactInfo.email;
+        document.getElementById("phone").textContent = contactInfo.phone;
+        document.getElementById("facebook").setAttribute("href", contactInfo.socialLinks.facebook);
+        document.getElementById("linkedin").setAttribute("href", contactInfo.socialLinks.linkedin);
+        document.getElementById("github").setAttribute("href", contactInfo.socialLinks.github);
+        document.getElementById("dribbble").setAttribute("href", contactInfo.socialLinks.dribbble);
+    </script>
 </body>
 </html>
