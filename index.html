@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Cube Portfolio</title>
+    <title>Contact Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
@@ -11,159 +11,144 @@
             background-color: black;
             color: white;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            perspective: 1500px; /* Adds depth for 3D effect */
-        }
-        .cube {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            transform-style: preserve-3d;
-            transform: rotateX(0deg) rotateY(0deg);
-            transition: transform 1s ease;
-        }
-        .cube-face {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background-color: #222;
-            border: 2px solid #00aaff;
-            display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
-            font-size: 24px;
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.6);
         }
-        /* Position each face of the cube */
-        .front  { transform: rotateY(  0deg) translateZ(200px); }
-        .back   { transform: rotateY(180deg) translateZ(200px); }
-        .left   { transform: rotateY(-90deg) translateZ(200px); }
-        .right  { transform: rotateY( 90deg) translateZ(200px); }
-        .top    { transform: rotateX( 90deg) translateZ(200px); }
-        .bottom { transform: rotateX(-90deg) translateZ(200px); }
-
-        /* Sidebar and content positioning */
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            width: 80%;
+            perspective: 1500px; /* Adds depth to the 3D effect */
+        }
         .sidebar {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            z-index: 10;
+            margin-right: 20px;
+            padding: 10px;
+            width: 150px;
+            background-color: #222;
         }
         .sidebar button {
             background-color: black;
             color: white;
             border: 1px solid #00aaff;
-            padding: 10px 20px;
+            padding: 15px 20px;
+            margin: 10px 0;
             cursor: pointer;
+            text-align: left;
             font-size: 14px;
-            transition: background-color 0.3s;
+            width: 100%;
         }
         .sidebar button:hover {
             background-color: #00aaff;
         }
+        .content {
+            position: relative;
+            width: 600px;
+            height: 450px;
+            border: 2px solid #00aaff;
+            padding: 20px;
+            box-shadow: 0 0 20px #00aaff;
+            margin-left: 20px;
+            background-color: #222;
+            transition: transform 1s ease, opacity 1s ease;
+            transform-style: preserve-3d;
+        }
+        .content h1 {
+            color: #00aaff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .content .icon {
+            margin-right: 10px;
+        }
+        .content .social-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .content .social-icons a {
+            color: white;
+            font-size: 20px;
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <div class="sidebar">
+            <button onclick="showContent('intro')">Intro</button>
+            <button onclick="showContent('work')">Work</button>
+            <button onclick="showContent('education')">Education</button>
+            <button onclick="showContent('certificates')">Certificates</button>
+            <button onclick="showContent('projects')">Projects</button>
+            <button onclick="showContent('contacts')">Contacts</button>
+        </div>
+        <div class="content" id="content-box">
+            <h1 id="content-title">Contacts</h1>
+            <div id="content-body">
+                <p><i class="fas fa-map-marker-alt icon"></i><span>Beijing, China</span></p>
+                <p><i class="fas fa-envelope icon"></i><span>email@nameazam.com</span></p>
+                <p><i class="fas fa-phone icon"></i><span>+123456789</span></p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="sidebar">
-    <button onclick="rotateCube('intro')">Intro</button>
-    <button onclick="rotateCube('work')">Work</button>
-    <button onclick="rotateCube('education')">Education</button>
-    <button onclick="rotateCube('certificates')">Certificates</button>
-    <button onclick="rotateCube('projects')">Projects</button>
-    <button onclick="rotateCube('contacts')">Contacts</button>
-</div>
-
-<div class="cube" id="cube">
-    <div class="cube-face front" id="intro">
-        <h1>Introduction</h1>
-        <p>Welcome to my portfolio! I am a web developer and designer passionate about creating innovative solutions.</p>
-    </div>
-    <div class="cube-face back" id="work">
-        <h1>Work</h1>
-        <p>I have worked with companies in the tech industry, building scalable applications and websites.</p>
-    </div>
-    <div class="cube-face left" id="education">
-        <h1>Education</h1>
-        <p>I graduated with a degree in Computer Science from XYZ University, where I gained deep knowledge in programming and software engineering.</p>
-    </div>
-    <div class="cube-face right" id="certificates">
-        <h1>Certificates</h1>
-        <p>I have certifications in Full-Stack Development, Data Science, and Ethical Hacking from recognized institutions.</p>
-    </div>
-    <div class="cube-face top" id="projects">
-        <h1>Projects</h1>
-        <p>Check out my projects, which include web apps, APIs, and mobile apps. I love building useful tools that solve real-world problems.</p>
-    </div>
-    <div class="cube-face bottom" id="contacts">
-        <h1>Contacts</h1>
-        <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-        <p><i class="fas fa-envelope"></i> email@nameazam.com</p>
-        <p><i class="fas fa-phone"></i> +123456789</p>
-    </div>
-</div>
-
-<script>
-    // Content for different sections
-    const contentData = {
-        intro: {
-            title: "Introduction",
-            body: "<p>Welcome to my portfolio! I am a web developer and designer passionate about creating innovative solutions.</p>"
-        },
-        work: {
-            title: "Work",
-            body: "<p>I have worked with companies in the tech industry, building scalable applications and websites.</p>"
-        },
-        education: {
-            title: "Education",
-            body: "<p>I graduated with a degree in Computer Science from XYZ University, where I gained deep knowledge in programming and software engineering.</p>"
-        },
-        certificates: {
-            title: "Certificates",
-            body: "<p>I have certifications in Full-Stack Development, Data Science, and Ethical Hacking from recognized institutions.</p>"
-        },
-        projects: {
-            title: "Projects",
-            body: "<p>Check out my projects, which include web apps, APIs, and mobile apps. I love building useful tools that solve real-world problems.</p>"
-        },
-        contacts: {
-            title: "Contacts",
-            body: "<p><i class='fas fa-map-marker-alt'></i><span>Beijing, China</span></p><p><i class='fas fa-envelope'></i><span>email@nameazam.com</span></p><p><i class='fas fa-phone'></i><span>+123456789</span></p>"
-        }
-    };
-
-    // Function to rotate cube and show the selected content
-    function rotateCube(section) {
-        const cube = document.getElementById('cube');
-        const selectedFace = document.getElementById(section);
-        const contentTitle = contentData[section].title;
-        const contentBody = contentData[section].body;
-
-        // Rotate the cube to show the selected section
-        const faces = {
-            intro: 'rotateY(  0deg)',
-            work: 'rotateY(180deg)',
-            education: 'rotateY(-90deg)',
-            certificates: 'rotateY( 90deg)',
-            projects: 'rotateX( 90deg)',
-            contacts: 'rotateX(-90deg)'
+    <script>
+        // Content for different sections
+        const contentData = {
+            intro: {
+                title: "Introduction",
+                body: "<p>Welcome to my portfolio! I am a web developer and designer passionate about creating innovative solutions.</p>"
+            },
+            work: {
+                title: "Work",
+                body: "<p>I have worked with companies in the tech industry, building scalable applications and websites.</p>"
+            },
+            education: {
+                title: "Education",
+                body: "<p>I graduated with a degree in Computer Science from XYZ University, where I gained deep knowledge in programming and software engineering.</p>"
+            },
+            certificates: {
+                title: "Certificates",
+                body: "<p>I have certifications in Full-Stack Development, Data Science, and Ethical Hacking from recognized institutions.</p>"
+            },
+            projects: {
+                title: "Projects",
+                body: "<p>Check out my projects, which include web apps, APIs, and mobile apps. I love building useful tools that solve real-world problems.</p>"
+            },
+            contacts: {
+                title: "Contacts",
+                body: "<p><i class='fas fa-map-marker-alt icon'></i><span>Beijing, China</span></p><p><i class='fas fa-envelope icon'></i><span>email@nameazam.com</span></p><p><i class='fas fa-phone icon'></i><span>+123456789</span></p><div class='social-icons'><a href='#'><i class='fab fa-facebook'></i></a><a href='#'><i class='fab fa-linkedin'></i></a><a href='#'><i class='fab fa-github'></i></a><a href='#'><i class='fab fa-dribbble'></i></a></div>"
+            }
         };
 
-        cube.style.transform = faces[section];
+        // Function to display content dynamically with animation
+        function showContent(section) {
+            const content = contentData[section];
 
-        // Change the content dynamically after the cube rotation
-        setTimeout(() => {
-            selectedFace.innerHTML = `<h1>${contentTitle}</h1>${contentBody}`;
-        }, 1000);  // Wait for the cube rotation animation
-    }
-</script>
+            // Adding 3D transformation with rotation on each click
+            const contentBox = document.getElementById("content-box");
+            contentBox.style.transform = 'rotateY(180deg)'; // Rotate the content box for 3D effect
 
+            setTimeout(() => {
+                document.getElementById("content-title").textContent = content.title;
+                document.getElementById("content-body").innerHTML = content.body;
+
+                // Reset the rotation to 0 to make the content box return to its normal position
+                contentBox.style.transform = 'rotateY(0deg)';
+            }, 1000); // Delay to make the rotation visible during content change
+        }
+    </script>
 </body>
 </html>
