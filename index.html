@@ -70,48 +70,64 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <button>Intro</button>
-            <button>Work</button>
-            <button>Education</button>
-            <button>Certificates</button>
-            <button>Projects</button>
-            <button>Contacts</button>
+            <button onclick="showContent('intro')">Intro</button>
+            <button onclick="showContent('work')">Work</button>
+            <button onclick="showContent('education')">Education</button>
+            <button onclick="showContent('certificates')">Certificates</button>
+            <button onclick="showContent('projects')">Projects</button>
+            <button onclick="showContent('contacts')">Contacts</button>
         </div>
         <div class="content">
-            <h1 id="contact-title">Contacts</h1>
-            <p><i class="fas fa-map-marker-alt icon"></i><span id="location"></span></p>
-            <p><i class="fas fa-envelope icon"></i><span id="email"></span></p>
-            <p><i class="fas fa-phone icon"></i><span id="phone"></span></p>
-            <div class="social-icons">
-                <a href="#" id="facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" id="linkedin"><i class="fab fa-linkedin"></i></a>
-                <a href="#" id="github"><i class="fab fa-github"></i></a>
-                <a href="#" id="dribbble"><i class="fab fa-dribbble"></i></a>
+            <h1 id="content-title">Contacts</h1>
+            <div id="content-body">
+                <p><i class="fas fa-map-marker-alt icon"></i><span>Beijing, China</span></p>
+                <p><i class="fas fa-envelope icon"></i><span>email@nameazam.com</span></p>
+                <p><i class="fas fa-phone icon"></i><span>+123456789</span></p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-dribbble"></i></a>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Dynamic content
-        const contactInfo = {
-            location: "Beijing, China",
-            email: "email@nameazam.com",
-            phone: "+123456789",
-            socialLinks: {
-                facebook: "https://facebook.com/username",
-                linkedin: "https://linkedin.com/in/username",
-                github: "https://github.com/username",
-                dribbble: "https://dribbble.com/username"
+        // Content for different sections
+        const contentData = {
+            intro: {
+                title: "Introduction",
+                body: "<p>Welcome to my portfolio! I am a web developer and designer passionate about creating innovative solutions.</p>"
+            },
+            work: {
+                title: "Work",
+                body: "<p>I have worked with companies in the tech industry, building scalable applications and websites.</p>"
+            },
+            education: {
+                title: "Education",
+                body: "<p>I graduated with a degree in Computer Science from XYZ University, where I gained deep knowledge in programming and software engineering.</p>"
+            },
+            certificates: {
+                title: "Certificates",
+                body: "<p>I have certifications in Full-Stack Development, Data Science, and Ethical Hacking from recognized institutions.</p>"
+            },
+            projects: {
+                title: "Projects",
+                body: "<p>Check out my projects, which include web apps, APIs, and mobile apps. I love building useful tools that solve real-world problems.</p>"
+            },
+            contacts: {
+                title: "Contacts",
+                body: "<p><i class='fas fa-map-marker-alt icon'></i><span>Beijing, China</span></p><p><i class='fas fa-envelope icon'></i><span>email@nameazam.com</span></p><p><i class='fas fa-phone icon'></i><span>+123456789</span></p><div class='social-icons'><a href='#'><i class='fab fa-facebook'></i></a><a href='#'><i class='fab fa-linkedin'></i></a><a href='#'><i class='fab fa-github'></i></a><a href='#'><i class='fab fa-dribbble'></i></a></div>"
             }
         };
 
-        document.getElementById("location").textContent = contactInfo.location;
-        document.getElementById("email").textContent = contactInfo.email;
-        document.getElementById("phone").textContent = contactInfo.phone;
-        document.getElementById("facebook").setAttribute("href", contactInfo.socialLinks.facebook);
-        document.getElementById("linkedin").setAttribute("href", contactInfo.socialLinks.linkedin);
-        document.getElementById("github").setAttribute("href", contactInfo.socialLinks.github);
-        document.getElementById("dribbble").setAttribute("href", contactInfo.socialLinks.dribbble);
+        // Function to display content dynamically
+        function showContent(section) {
+            const content = contentData[section];
+            document.getElementById("content-title").textContent = content.title;
+            document.getElementById("content-body").innerHTML = content.body;
+        }
     </script>
 </body>
 </html>
