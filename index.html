@@ -7,13 +7,14 @@
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: white;
+            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a; /* Dark background */
+            color: #00ff00; /* Neon green text */
             display: flex;
             height: 100vh;
-            justify-content: flex-start; /* Aligns the content to the left */
-            align-items: flex-start; /* Aligns content to the top */
+            justify-content: flex-start;
+            align-items: flex-start;
+            overflow: hidden;
         }
         .container {
             display: flex;
@@ -24,38 +25,45 @@
             flex-direction: column;
             margin-right: 20px;
             padding: 10px;
-            position: fixed; /* Keeps the sidebar fixed on the left */
+            position: fixed;
             left: 0;
             top: 0;
+            background-color: #0a0a0a;
+            box-shadow: 2px 0 5px rgba(0, 255, 0, 0.5); /* Add a green shadow */
         }
         .sidebar button {
             background-color: black;
-            color: white;
-            border: 1px solid #00aaff;
+            color: #00ff00;
+            border: 1px solid #00ff00;
             padding: 15px 25px;
             margin: 10px 0;
             cursor: pointer;
             text-align: left;
             font-size: 16px;
-            width: 200px; /* Adjust width for buttons */
+            width: 200px;
+            transition: all 0.3s ease;
         }
         .sidebar button:hover {
-            background-color: #00aaff;
+            background-color: #00ff00;
+            color: black;
+            transform: scale(1.05); /* Slight scale effect on hover */
         }
         .content {
             position: relative;
-            width: 500px; /* Increased width */
-            height: 400px; /* Increased height */
-            border: 2px solid #00aaff;
+            width: 500px;
+            height: 400px;
+            border: 2px solid #00ff00;
             padding: 20px;
-            box-shadow: 0 0 20px #00aaff;
-            margin-left: 250px; /* Creates space for sidebar */
+            box-shadow: 0 0 20px #00ff00;
+            margin-left: 250px;
             overflow-y: auto;
+            animation: glitch 1s infinite linear alternate-reverse;
         }
         .content h1 {
-            color: #00aaff;
-            font-size: 24px;
+            color: #00ff00;
+            font-size: 30px;
             margin-bottom: 20px;
+            animation: glitch-text 1s infinite alternate;
         }
         .content p {
             margin: 10px 0;
@@ -69,8 +77,18 @@
             margin-top: 20px;
         }
         .content .social-icons a {
-            color: white;
+            color: #00ff00;
             font-size: 20px;
+        }
+        @keyframes glitch {
+            0% { transform: translate(2px, 2px); }
+            50% { transform: translate(-2px, -2px); }
+            100% { transform: translate(2px, 2px); }
+        }
+        @keyframes glitch-text {
+            0% { text-shadow: 1px 0 red, 0 1px blue, -1px 0 yellow, 0 -1px green; }
+            50% { text-shadow: -1px 0 red, 0 -1px blue, 1px 0 yellow, 0 1px green; }
+            100% { text-shadow: 1px 0 red, 0 1px blue, -1px 0 yellow, 0 -1px green; }
         }
     </style>
 </head>
@@ -101,7 +119,6 @@
     </div>
 
     <script>
-        // Content for different sections
         const contentData = {
             intro: {
                 title: "Introduction",
@@ -129,7 +146,6 @@
             }
         };
 
-        // Function to display content dynamically
         function showContent(section) {
             const content = contentData[section];
             document.getElementById("content-title").textContent = content.title;
