@@ -14,7 +14,31 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            perspective: 1500px; /* Adds depth for 3D effect */
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+            z-index: 10;
+        }
+        .sidebar button {
+            background-color: black;
+            color: white;
+            border: 1px solid #00aaff;
+            padding: 15px 20px;
+            margin: 10px 0;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+        }
+        .sidebar button:hover {
+            background-color: #00aaff;
         }
         .cube {
             position: relative;
@@ -56,57 +80,49 @@
             gap: 10px;
             z-index: 10;
         }
-        .sidebar button {
-            background-color: black;
-            color: white;
-            border: 1px solid #00aaff;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s;
-        }
-        .sidebar button:hover {
-            background-color: #00aaff;
-        }
     </style>
 </head>
 <body>
 
-<div class="sidebar">
-    <button onclick="rotateCube('intro')">Intro</button>
-    <button onclick="rotateCube('work')">Work</button>
-    <button onclick="rotateCube('education')">Education</button>
-    <button onclick="rotateCube('certificates')">Certificates</button>
-    <button onclick="rotateCube('projects')">Projects</button>
-    <button onclick="rotateCube('contacts')">Contacts</button>
-</div>
+<div class="container">
+    <!-- Sidebar on the left -->
+    <div class="sidebar">
+        <button onclick="rotateCube('intro')">Intro</button>
+        <button onclick="rotateCube('work')">Work</button>
+        <button onclick="rotateCube('education')">Education</button>
+        <button onclick="rotateCube('certificates')">Certificates</button>
+        <button onclick="rotateCube('projects')">Projects</button>
+        <button onclick="rotateCube('contacts')">Contacts</button>
+    </div>
 
-<div class="cube" id="cube">
-    <div class="cube-face front" id="intro">
-        <h1>Introduction</h1>
-        <p>Welcome to my portfolio! I am a web developer and designer passionate about creating innovative solutions.</p>
-    </div>
-    <div class="cube-face back" id="work">
-        <h1>Work</h1>
-        <p>I have worked with companies in the tech industry, building scalable applications and websites.</p>
-    </div>
-    <div class="cube-face left" id="education">
-        <h1>Education</h1>
-        <p>I graduated with a degree in Computer Science from XYZ University, where I gained deep knowledge in programming and software engineering.</p>
-    </div>
-    <div class="cube-face right" id="certificates">
-        <h1>Certificates</h1>
-        <p>I have certifications in Full-Stack Development, Data Science, and Ethical Hacking from recognized institutions.</p>
-    </div>
-    <div class="cube-face top" id="projects">
-        <h1>Projects</h1>
-        <p>Check out my projects, which include web apps, APIs, and mobile apps. I love building useful tools that solve real-world problems.</p>
-    </div>
-    <div class="cube-face bottom" id="contacts">
-        <h1>Contacts</h1>
-        <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
-        <p><i class="fas fa-envelope"></i> email@nameazam.com</p>
-        <p><i class="fas fa-phone"></i> +123456789</p>
+    <!-- Cube on the right -->
+    <div class="cube" id="cube">
+        <div class="cube-face front" id="intro">
+            <h1>Introduction</h1>
+            <p>Welcome to my portfolio! I am a web developer and designer passionate about creating innovative solutions.</p>
+        </div>
+        <div class="cube-face back" id="work">
+            <h1>Work</h1>
+            <p>I have worked with companies in the tech industry, building scalable applications and websites.</p>
+        </div>
+        <div class="cube-face left" id="education">
+            <h1>Education</h1>
+            <p>I graduated with a degree in Computer Science from XYZ University, where I gained deep knowledge in programming and software engineering.</p>
+        </div>
+        <div class="cube-face right" id="certificates">
+            <h1>Certificates</h1>
+            <p>I have certifications in Full-Stack Development, Data Science, and Ethical Hacking from recognized institutions.</p>
+        </div>
+        <div class="cube-face top" id="projects">
+            <h1>Projects</h1>
+            <p>Check out my projects, which include web apps, APIs, and mobile apps. I love building useful tools that solve real-world problems.</p>
+        </div>
+        <div class="cube-face bottom" id="contacts">
+            <h1>Contacts</h1>
+            <p><i class="fas fa-map-marker-alt"></i> Beijing, China</p>
+            <p><i class="fas fa-envelope"></i> email@nameazam.com</p>
+            <p><i class="fas fa-phone"></i> +123456789</p>
+        </div>
     </div>
 </div>
 
