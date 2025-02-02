@@ -12,38 +12,45 @@
             color: white;
             display: flex;
             height: 100vh;
-            justify-content: center;
-            align-items: center;
+            justify-content: flex-start; /* Aligns the content to the left */
+            align-items: flex-start; /* Aligns content to the top */
         }
         .container {
             display: flex;
-            align-items: center;
+            width: 100%;
         }
         .sidebar {
             display: flex;
             flex-direction: column;
             margin-right: 20px;
+            padding: 10px;
+            position: fixed; /* Keeps the sidebar fixed on the left */
+            left: 0;
+            top: 0;
         }
         .sidebar button {
             background-color: black;
             color: white;
             border: 1px solid #00aaff;
-            padding: 10px 20px;
-            margin: 5px 0;
+            padding: 15px 25px;
+            margin: 10px 0;
             cursor: pointer;
             text-align: left;
-            font-size: 14px;
+            font-size: 16px;
+            width: 200px; /* Adjust width for buttons */
         }
         .sidebar button:hover {
             background-color: #00aaff;
         }
         .content {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 500px; /* Increased width */
+            height: 400px; /* Increased height */
             border: 2px solid #00aaff;
             padding: 20px;
-            box-shadow: 0 0 10px #00aaff;
+            box-shadow: 0 0 20px #00aaff;
+            margin-left: 250px; /* Creates space for sidebar */
+            overflow-y: auto;
         }
         .content h1 {
             color: #00aaff;
