@@ -12,22 +12,23 @@
             color: white;
             display: flex;
             height: 100vh;
-            justify-content: center; /* Centers content horizontally */
-            align-items: center; /* Centers content vertically */
+            justify-content: center;
+            align-items: center;
         }
         .container {
             display: flex;
-            align-items: flex-start; /* Aligns items at the top */
-            justify-content: center; /* Centers content horizontally */
-            width: 80%; /* Makes the container responsive */
+            align-items: flex-start;
+            justify-content: center;
+            width: 80%;
+            perspective: 1500px; /* Adds depth to the 3D effect */
         }
         .sidebar {
             display: flex;
             flex-direction: column;
             margin-right: 20px;
             padding: 10px;
-            width: 150px; /* Reduced width of the sidebar */
-            background-color: #222; /* Adding a background color to distinguish the sidebar */
+            width: 150px;
+            background-color: #222;
         }
         .sidebar button {
             background-color: black;
@@ -38,20 +39,22 @@
             cursor: pointer;
             text-align: left;
             font-size: 14px;
-            width: 100%; /* Make buttons fill the sidebar width */
+            width: 100%;
         }
         .sidebar button:hover {
             background-color: #00aaff;
         }
         .content {
             position: relative;
-            width: 600px; /* Increased width of the content box */
-            height: 450px; /* Increased height of the content box */
+            width: 600px;
+            height: 450px;
             border: 2px solid #00aaff;
             padding: 20px;
             box-shadow: 0 0 20px #00aaff;
-            margin-left: 20px; /* Added margin for spacing between sidebar and content */
-            background-color: #222; /* Background for the content box */
+            margin-left: 20px;
+            background-color: #222;
+            transition: transform 1s ease, opacity 1s ease;
+            transform-style: preserve-3d;
         }
         .content h1 {
             color: #00aaff;
@@ -85,7 +88,7 @@
             <button onclick="showContent('projects')">Projects</button>
             <button onclick="showContent('contacts')">Contacts</button>
         </div>
-        <div class="content">
+        <div class="content" id="content-box">
             <h1 id="content-title">Contacts</h1>
             <div id="content-body">
                 <p><i class="fas fa-map-marker-alt icon"></i><span>Beijing, China</span></p>
@@ -130,11 +133,21 @@
             }
         };
 
-        // Function to display content dynamically
+        // Function to display content dynamically with animation
         function showContent(section) {
             const content = contentData[section];
-            document.getElementById("content-title").textContent = content.title;
-            document.getElementById("content-body").innerHTML = content.body;
+
+            // Adding 3D transformation with rotation on each click
+            const contentBox = document.getElementById("content-box");
+            contentBox.style.transform = 'rotateY(180deg)'; // Rotate the content box for 3D effect
+
+            setTimeout(() => {
+                document.getElementById("content-title").textContent = content.title;
+                document.getElementById("content-body").innerHTML = content.body;
+
+                // Reset the rotation to 0 to make the content box return to its normal position
+                contentBox.style.transform = 'rotateY(0deg)';
+            }, 1000); // Delay to make the rotation visible during content change
         }
     </script>
 </body>
