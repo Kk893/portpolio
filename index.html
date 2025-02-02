@@ -12,45 +12,46 @@
             color: white;
             display: flex;
             height: 100vh;
-            justify-content: flex-start; /* Aligns the content to the left */
-            align-items: flex-start; /* Aligns content to the top */
+            justify-content: center; /* Centers content horizontally */
+            align-items: center; /* Centers content vertically */
         }
         .container {
             display: flex;
-            width: 100%;
+            align-items: flex-start; /* Aligns items at the top */
+            justify-content: center; /* Centers content horizontally */
+            width: 80%; /* Makes the container responsive */
         }
         .sidebar {
             display: flex;
             flex-direction: column;
             margin-right: 20px;
             padding: 10px;
-            position: fixed; /* Keeps the sidebar fixed on the left */
-            left: 0;
-            top: 0;
+            width: 150px; /* Reduced width of the sidebar */
+            background-color: #222; /* Adding a background color to distinguish the sidebar */
         }
         .sidebar button {
             background-color: black;
             color: white;
             border: 1px solid #00aaff;
-            padding: 15px 25px;
+            padding: 15px 20px;
             margin: 10px 0;
             cursor: pointer;
             text-align: left;
-            font-size: 16px;
-            width: 200px; /* Adjust width for buttons */
+            font-size: 14px;
+            width: 100%; /* Make buttons fill the sidebar width */
         }
         .sidebar button:hover {
             background-color: #00aaff;
         }
         .content {
             position: relative;
-            width: 500px; /* Increased width */
-            height: 400px; /* Increased height */
+            width: 600px; /* Increased width of the content box */
+            height: 450px; /* Increased height of the content box */
             border: 2px solid #00aaff;
             padding: 20px;
             box-shadow: 0 0 20px #00aaff;
-            margin-left: 250px; /* Creates space for sidebar */
-            overflow-y: auto;
+            margin-left: 20px; /* Added margin for spacing between sidebar and content */
+            background-color: #222; /* Background for the content box */
         }
         .content h1 {
             color: #00aaff;
